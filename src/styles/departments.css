@@ -1,0 +1,847 @@
+
+/* =========================================
+   NOVA HR — Department Management
+   Screen 05 — Departments List
+   ========================================= */
+
+
+/* =========================================
+   1. Department Page
+   ========================================= */
+
+.departments-page {
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 28px 30px 36px;
+  color: #181b25;
+  font-family: inherit;
+}
+
+.departments-page-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.departments-page-title h1 {
+  margin: 0;
+  color: #181b25;
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.departments-page-title p {
+  margin: 8px 0 0;
+  color: #777e8e;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.departments-page-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #9298a5;
+  font-size: 12px;
+}
+
+.departments-page-breadcrumb strong {
+  color: #2878c8;
+  font-weight: 600;
+}
+
+.breadcrumb-separator {
+  color: #c4c8d0;
+}
+
+
+/* =========================================
+   2. Department Statistics
+   ========================================= */
+
+.department-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  width: 100%;
+}
+
+.department-stat-card {
+  min-width: 0;
+  min-height: 112px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+  background: #ffffff;
+  border: 1px solid #e9ebf0;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(20, 43, 74, 0.025);
+  transition: border-color 0.2s ease,
+              box-shadow 0.2s ease;
+}
+
+.department-stat-card:hover {
+  border-color: #d6e5f5;
+  box-shadow: 0 5px 16px rgba(20, 43, 74, 0.06);
+}
+
+.department-stat-icon {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  font-size: 23px;
+  font-weight: 600;
+}
+
+.department-stat-icon.blue {
+  color: #2878c8;
+  background: #eaf3fc;
+}
+
+.department-stat-icon.green {
+  color: #249b70;
+  background: #e9f7f1;
+}
+
+.department-stat-icon.purple {
+  color: #8060c9;
+  background: #f1edfb;
+}
+
+.department-stat-icon.orange {
+  color: #dc923a;
+  background: #fff4e6;
+}
+
+.department-stat-info {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.department-stat-title {
+  color: #777e8e;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.department-stat-value {
+  color: #181b25;
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+
+/* =========================================
+   3. Departments Table Card
+   ========================================= */
+
+.departments-table-card {
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid #e9ebf0;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(20, 43, 74, 0.025);
+}
+
+.departments-table-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 22px 24px;
+  border-bottom: 1px solid #edf0f4;
+}
+
+.departments-table-heading h2 {
+  margin: 0;
+  color: #181b25;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.departments-table-heading p {
+  margin: 7px 0 0;
+  color: #9298a5;
+  font-size: 12px;
+}
+
+
+/* =========================================
+   4. Table Toolbar
+   ========================================= */
+
+.departments-table-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.department-add-button,
+.department-filter-button {
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 15px;
+  border-radius: 7px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.department-add-button {
+  color: #ffffff;
+  background: #2878c8;
+  border: 1px solid #2878c8;
+}
+
+.department-add-button:hover {
+  background: #2068b0;
+  border-color: #2068b0;
+}
+
+.department-add-button span {
+  font-size: 19px;
+  line-height: 1;
+}
+
+.department-filter-button {
+  color: #555c6e;
+  background: #ffffff;
+  border: 1px solid #e4e6ec;
+}
+
+.department-filter-button:hover,
+.department-filter-button.active {
+  color: #2878c8;
+  background: #f1f7fd;
+  border-color: #b8d5f0;
+}
+
+.department-filter-button span {
+  font-size: 17px;
+}
+
+.department-search-box {
+  width: 230px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 0 12px;
+  background: #ffffff;
+  border: 1px solid #e4e6ec;
+  border-radius: 7px;
+  transition: border-color 0.2s ease,
+              box-shadow 0.2s ease;
+}
+
+.department-search-box:focus-within {
+  border-color: #2878c8;
+  box-shadow: 0 0 0 3px rgba(40, 120, 200, 0.08);
+}
+
+.department-search-icon {
+  color: #9298a5;
+  font-size: 21px;
+}
+
+.department-search-box input {
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+  padding: 0;
+  color: #181b25;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: inherit;
+  font-size: 11px;
+}
+
+.department-search-box input::placeholder {
+  color: #a0a5b0;
+}
+
+
+/* =========================================
+   5. Filter Panel
+   ========================================= */
+
+.department-filters-panel {
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+  padding: 18px 24px;
+  background: #fafbfd;
+  border-bottom: 1px solid #edf0f4;
+}
+
+.department-filter-field {
+  min-width: 190px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.department-filter-field label {
+  color: #555c6e;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.department-filter-field select {
+  height: 38px;
+  padding: 0 12px;
+  color: #444b5b;
+  background: #ffffff;
+  border: 1px solid #e4e6ec;
+  border-radius: 6px;
+  outline: none;
+  font-family: inherit;
+  font-size: 12px;
+}
+
+.department-filter-field select:focus {
+  border-color: #2878c8;
+}
+
+.department-clear-filters {
+  height: 38px;
+  padding: 0 13px;
+  color: #2878c8;
+  background: transparent;
+  border: 1px solid #c9def2;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.department-clear-filters:hover {
+  background: #edf5fd;
+}
+
+
+/* =========================================
+   6. Departments Table
+   ========================================= */
+
+.departments-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.departments-table {
+  width: 100%;
+  min-width: 850px;
+  border-collapse: collapse;
+  text-align: right;
+}
+
+.departments-table thead {
+  background: #f8f9fb;
+}
+
+.departments-table th {
+  height: 49px;
+  padding: 0 18px;
+  color: #777e8e;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+  border-bottom: 1px solid #edf0f4;
+}
+
+.departments-table td {
+  height: 75px;
+  padding: 10px 18px;
+  color: #444b5b;
+  font-size: 12px;
+  border-bottom: 1px solid #f0f1f4;
+}
+
+.departments-table tbody tr {
+  transition: background 0.15s ease;
+}
+
+.departments-table tbody tr:hover {
+  background: #fafcff;
+}
+
+.departments-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+
+/* =========================================
+   7. Department Identity
+   ========================================= */
+
+.department-table-identity {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.department-table-avatar {
+  width: 39px;
+  height: 39px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2878c8;
+  background: #eaf3fc;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  direction: ltr;
+}
+
+.department-table-name {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.department-table-name strong {
+  color: #252a36;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.department-table-name span {
+  color: #9298a5;
+  font-size: 10px;
+  direction: ltr;
+  text-align: right;
+}
+
+.department-manager-name {
+  color: #555c6e;
+  font-weight: 500;
+}
+
+.department-employee-count {
+  color: #2878c8;
+  font-weight: 700;
+}
+
+.department-created-date {
+  color: #777e8e;
+  font-size: 11px;
+}
+
+
+/* =========================================
+   8. Department Status
+   ========================================= */
+
+.department-status-badge {
+  min-width: 75px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.department-status-badge.status-active {
+  color: #21865e;
+  background: #eaf7f0;
+}
+
+.department-status-badge.status-inactive {
+  color: #858b98;
+  background: #f0f1f3;
+}
+
+.department-status-dot {
+  width: 6px;
+  height: 6px;
+  flex-shrink: 0;
+  background: currentColor;
+  border-radius: 50%;
+}
+
+
+/* =========================================
+   9. Row Actions
+   ========================================= */
+
+.department-row-actions {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.department-action-button {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  border: 1px solid #e8eaf0;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.department-action-button.view-action {
+  color: #2878c8;
+}
+
+.department-action-button.view-action:hover {
+  background: #eaf3fc;
+  border-color: #c5def5;
+}
+
+.department-action-button.edit-action {
+  color: #d39437;
+}
+
+.department-action-button.edit-action:hover {
+  background: #fff5e8;
+  border-color: #f1dbb9;
+}
+
+.department-action-button.delete-action {
+  color: #d65b61;
+}
+
+.department-action-button.delete-action:hover {
+  background: #fff0f0;
+  border-color: #f2caca;
+}
+
+
+/* =========================================
+   10. Empty State
+   ========================================= */
+
+.department-empty-cell {
+  height: 240px !important;
+  text-align: center;
+}
+
+.department-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 30px 15px;
+}
+
+.department-empty-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #8ba8c5;
+  background: #eff5fb;
+  border-radius: 50%;
+  font-size: 23px;
+}
+
+.department-empty-state strong {
+  color: #444b5b;
+  font-size: 13px;
+}
+
+.department-empty-state p {
+  margin: 0;
+  color: #9298a5;
+  font-size: 11px;
+}
+
+.department-empty-state button {
+  margin-top: 5px;
+  padding: 8px 13px;
+  color: #2878c8;
+  background: #eff6fd;
+  border: none;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+
+/* =========================================
+   11. Table Footer & Pagination
+   ========================================= */
+
+.departments-table-footer {
+  min-height: 65px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 12px 22px;
+  border-top: 1px solid #edf0f4;
+}
+
+.departments-results-count {
+  color: #9298a5;
+  font-size: 11px;
+}
+
+.departments-pagination {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.pagination-arrow,
+.pagination-page {
+  width: 31px;
+  height: 31px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #777e8e;
+  background: #ffffff;
+  border: 1px solid #e8eaf0;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pagination-page:hover,
+.pagination-arrow:not(:disabled):hover {
+  color: #2878c8;
+  background: #f1f7fd;
+  border-color: #c8def3;
+}
+
+.pagination-page.active {
+  color: #ffffff;
+  background: #2878c8;
+  border-color: #2878c8;
+}
+
+.pagination-arrow:disabled {
+  color: #c6cad2;
+  background: #f8f9fb;
+  cursor: not-allowed;
+}
+
+
+/* =========================================
+   12. Responsive Design — Laptop
+   ========================================= */
+
+@media (max-width: 1200px) {
+  .departments-page {
+    padding: 24px 22px 30px;
+  }
+
+  .department-stats {
+    gap: 12px;
+  }
+
+  .department-stat-card {
+    padding: 16px;
+    gap: 11px;
+  }
+
+  .department-stat-value {
+    font-size: 22px;
+  }
+
+  .departments-table-header {
+    flex-wrap: wrap;
+  }
+}
+
+
+/* =========================================
+   13. Responsive Design — Tablet
+   ========================================= */
+
+@media (max-width: 900px) {
+  .department-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .departments-table-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .departments-table-toolbar {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .department-search-box {
+    flex: 1;
+    min-width: 180px;
+  }
+}
+
+
+/* =========================================
+   14. Responsive Design — Mobile
+   ========================================= */
+
+@media (max-width: 600px) {
+  .departments-page {
+    gap: 18px;
+    padding: 18px 12px 25px;
+  }
+
+  .departments-page-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .departments-page-title h1 {
+    font-size: 21px;
+  }
+
+  .departments-page-title p {
+    font-size: 11px;
+  }
+
+  .departments-page-breadcrumb {
+    font-size: 10px;
+  }
+
+  .department-stats {
+    gap: 9px;
+  }
+
+  .department-stat-card {
+    min-height: 91px;
+    padding: 12px 9px;
+    gap: 9px;
+  }
+
+  .department-stat-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 17px;
+  }
+
+  .department-stat-title {
+    font-size: 10px;
+  }
+
+  .department-stat-value {
+    font-size: 19px;
+  }
+
+  .departments-table-header {
+    padding: 17px 14px;
+  }
+
+  .departments-table-heading h2 {
+    font-size: 15px;
+  }
+
+  .departments-table-heading p {
+    font-size: 10px;
+    line-height: 1.7;
+  }
+
+  .departments-table-toolbar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .department-search-box {
+    width: 100%;
+    min-width: 0;
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+
+  .department-add-button,
+  .department-filter-button {
+    width: 100%;
+    padding: 0 8px;
+    font-size: 11px;
+  }
+
+  .department-filters-panel {
+    align-items: stretch;
+    flex-direction: column;
+    padding: 15px;
+  }
+
+  .department-filter-field {
+    width: 100%;
+  }
+
+  .departments-table-footer {
+    align-items: center;
+    flex-direction: column;
+    padding: 14px;
+  }
+
+  .departments-results-count {
+    text-align: center;
+  }
+}
+
+
+/* =========================================
+   15. Small Mobile
+   ========================================= */
+
+@media (max-width: 380px) {
+  .department-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .department-stat-card {
+    min-height: 78px;
+  }
+
+  .department-stat-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .departments-pagination {
+    gap: 3px;
+  }
+
+  .pagination-arrow,
+  .pagination-page {
+    width: 28px;
+    height: 28px;
+  }
+}

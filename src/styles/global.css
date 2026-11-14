@@ -1,0 +1,291 @@
+
+/* =========================================
+   NOVA HR — Global Design System
+   Based on Figma UI Reference
+   ========================================= */
+
+/* Arabic Typography */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap');
+
+
+/* =========================================
+   1. Design Tokens
+   ========================================= */
+
+:root {
+  /* Brand */
+  --color-brand: #142b4a;
+  --color-primary: #2878c8;
+  --color-primary-hover: #2068b0;
+  --color-primary-light: #edf5fc;
+
+  /* Backgrounds */
+  --color-background: #f7f8fa;
+  --color-surface: #ffffff;
+  --color-surface-secondary: #f5f6f8;
+  --color-surface-hover: #f0f5fa;
+
+  /* Text */
+  --color-text-primary: #181b25;
+  --color-text-secondary: #555c6e;
+  --color-text-muted: #8991a3;
+  --color-text-on-primary: #ffffff;
+
+  /* Borders */
+  --color-border: #e4e6ec;
+  --color-border-strong: #d0d4de;
+
+  /* Status */
+  --color-success: #079455;
+  --color-success-bg: #ecfdf3;
+  --color-success-border: #a6f4c5;
+
+  --color-warning: #dc6803;
+  --color-warning-bg: #fffaeb;
+  --color-warning-border: #fedf89;
+
+  --color-danger: #d92d20;
+  --color-danger-bg: #fef3f2;
+  --color-danger-border: #fecdca;
+
+  --color-info: #2878c8;
+  --color-info-bg: #eff8ff;
+  --color-info-border: #b2ddff;
+
+  /* Typography */
+  --font-family-primary: "Noto Sans Arabic", Tahoma, Arial, sans-serif;
+
+  --font-size-xs: 11px;
+  --font-size-sm: 12px;
+  --font-size-md: 13px;
+  --font-size-lg: 15px;
+  --font-size-xl: 18px;
+  --font-size-2xl: 24px;
+
+  /* Spacing */
+  --spacing-4: 4px;
+  --spacing-8: 8px;
+  --spacing-12: 12px;
+  --spacing-16: 16px;
+  --spacing-20: 20px;
+  --spacing-24: 24px;
+  --spacing-32: 32px;
+
+  /* Radius */
+  --radius-sm: 5px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 999px;
+
+  /* Shadows */
+  --shadow-card: 0 1px 3px rgba(16, 24, 40, 0.06);
+  --shadow-dropdown: 0 8px 24px rgba(16, 24, 40, 0.10);
+
+  /* Layout */
+  --sidebar-width: 256px;
+  --topbar-height: 72px;
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+}
+
+
+/* =========================================
+   2. Reset
+   ========================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  min-height: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  width: 100%;
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+
+  direction: rtl;
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-md);
+  font-weight: 400;
+  line-height: 1.6;
+
+  background: var(--color-background);
+  color: var(--color-text-primary);
+
+  overflow-x: hidden;
+
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+
+/* =========================================
+   3. General Elements
+   ========================================= */
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+input,
+select,
+textarea {
+  min-width: 0;
+  outline: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+
+/* =========================================
+   4. Typography
+   ========================================= */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-family: var(--font-family-primary);
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+p {
+  margin: 0;
+}
+
+small {
+  font-size: var(--font-size-xs);
+}
+
+
+/* =========================================
+   5. Reusable Utilities
+   ========================================= */
+
+.text-primary {
+  color: var(--color-text-primary);
+}
+
+.text-secondary {
+  color: var(--color-text-secondary);
+}
+
+.text-muted {
+  color: var(--color-text-muted);
+}
+
+.text-brand {
+  color: var(--color-brand);
+}
+
+.bg-surface {
+  background: var(--color-surface);
+}
+
+.border-default {
+  border: 1px solid var(--color-border);
+}
+
+
+/* =========================================
+   6. Focus Accessibility
+   ========================================= */
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+
+/* =========================================
+   7. Scrollbar
+   ========================================= */
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd0da;
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #aeb5c2;
+}
+
+
+/* =========================================
+   8. Responsive Foundation
+   ========================================= */
+
+@media (max-width: 768px) {
+  :root {
+    --spacing-24: 16px;
+    --spacing-32: 24px;
+  }
+
+  body {
+    font-size: var(--font-size-sm);
+  }
+}
